@@ -1,0 +1,31 @@
+{
+  "name": "workout-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1",
+    "mongose": "0.0.2-security",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.7.0",
+    "sequelize": "^4.44.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "./models/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sile-Kiman/Workout-Tracker.git"
+  },
+  "author": "Sile Kiman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sile-Kiman/Workout-Tracker/issues"
+  },
+  "homepage": "https://github.com/Sile-Kiman/Workout-Tracker#readme"
+}
