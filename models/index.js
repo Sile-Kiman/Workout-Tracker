@@ -1,6 +1,7 @@
 // Exporting an object containing all of our models
 
 module.exports = {
-  seed: require("./seed"),
+  //seed: require("./seed"),
+  workout: require("./workout"),
    
 };

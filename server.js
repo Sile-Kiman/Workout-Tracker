@@ -15,16 +15,26 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+require("./routes/api-routes")(app);
+require("./routes/html-routes")(app);
+
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
-// db.workout.create({ name: "excercise" })
+
+// app.post("/exercise", ({ body }, res) => {
+
+// db.workout.create({ exercise: body })
 //   .then(dbworkout => {
 //     console.log(dbworkout);
 //   })
 //   .catch(({message}) => {
 //     console.log(message);
 //   });
+
+  //Port
   app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
   });
-  
+//});
+//}//

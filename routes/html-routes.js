@@ -13,6 +13,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 // exercise route loads exercise.html
+  app.get("/exercise?", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/exercise.html"));
+  });
   app.get("/exercise", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/exercise.html"));
   });
