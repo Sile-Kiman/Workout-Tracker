@@ -38,8 +38,8 @@ Test:
 
  
 Image of the Site:
-<img scr="assets/images/colorchange.PNG">
-<img scr="assets/images/localstorage.PNG">
+![image](https://user-images.githubusercontent.com/36079663/75103937-2cb77300-55d0-11ea-9920-1e5951ca8d74.png)
+ 
  
 License:
 MIT License
