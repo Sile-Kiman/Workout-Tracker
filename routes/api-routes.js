@@ -7,8 +7,8 @@ module.exports = app => {
     .catch(err => res.json(err))
   }); 
 
-app.post("/api/workouts", ({body}, res) => {
-  db.workout.create(body)
+app.post("/api/workouts", (req, res) => {
+  db.workout.create(req.body)
   .then(result => res.json(result))
   .catch(err => res.json(err))
 });
