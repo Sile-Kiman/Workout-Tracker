@@ -1,65 +1,58 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
-const WorkoutSchema = new Schema({
-  day: {
-    type: Date,
-    default: Date.now
-  },
+const WorkoutSchema = new Schema ({
+    day: {
+        type: Date,
+        default: Date.now
+    },
 
-  exercise: [{
-    name:{
-        type: String,
-        trim: true,
-        required: "Name is Required"
-      },
-
-      type: {
-        type: String,
-        trim: true,
-        required: "Name is Required"
-      }, 
-      distance:{
-        type: Number,
-        trim: true,
-         
-      }, 
-      weight: {
-        type: Number,
-        trim: true,
-        required: "weight is Required"
-      }, 
-      sets: {
-        type: Number,
-        trim: true,
-        
-      },
-      reps: {
-        type: Number,
-        trim: true, 
-      } , 
-  }]
- 
-  
+    exercises: [
+        {
+            type: {
+                type: String, 
+                trim: true,
+                required: "type is required."
+            },
+            name: {
+                type: String, 
+                trim: true,
+                required: "name is required."
+            },
+            duration: {
+                type: Number, 
+                required: "duration is rquired."
+            },
+            weight: {
+                type: Number,
+            },
+            distance: {
+                type: Number,
+            },
+            reps: {
+                type: Number,
+            },
+            sets: {
+                type: Number,
+            }
+        }
+    ]
 },
 {
-  toJSON: {
-    //Virtual function
-    virtuals: true,
+    toJSON: {
+      virtuals: true
+    }
   }
- 
-}
-
 );
-
-WorkoutSchema.virtual("totalDuration").get(function (){
-  //reduce the array of exercises
-  return this.exercise.reduce((total,  exercise) =>{
-     return total + exercise.duration;
+WorkoutSchema.virtual("totalDuration").get(function() {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.duration;
   }, 0);
 
 });
 
-const workout = mongoose.model("workout", WorkoutSchema);
 
-module.exports = workout;
+const Workout = mongoose.model("Workout", WorkoutSchema);
+
+module.exports = Workout;

@@ -1,17 +1,29 @@
- let mongoose = require("mongoose");
- let db = require("../models");
+let db = require("../models");
 
 module.exports = app => {
- 
   app.get("/api/workouts", (req, res) => {
-    db.workout.find({}, (err, result) => {
-      if (err) {
-        res.send(err);
-      } else {
-        res.json(result);
-      }
-      console.log("database data" , result)
-    });
+    db.workout.find({})
+    .then(result => res.json(result))
+    .catch(err => res.json(err))
   }); 
- 
+
+app.post("/api/workouts", ({body}, res) => {
+  db.workout.create(body)
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+});
+
+app.get("/api/workouts/range", (req, res) => {
+  db.workout.find()
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+});
+
+app.put("/api/workouts/:id", (req, res) => {
+  db.workout.findByIdAndUpdate(req.params.id, { 
+      $push: {exercises: req.body}
+  })
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+});
 }
